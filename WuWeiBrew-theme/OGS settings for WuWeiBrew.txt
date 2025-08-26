@@ -1,0 +1,9 @@
+https://claudiupapasteri.github.io/Go-themes/WuWeiBrew-theme/WuWeiBrew_board_hr.png
+https://claudiupapasteri.github.io/Go-themes/WuWeiBrew-theme/WuWeiBrew_black_hr.png
+https://claudiupapasteri.github.io/Go-themes/WuWeiBrew-theme/WuWeiBrew_white_hr.png
+
+I use this line (and label) color:
+line light cream RGB (HTML f2dec2) [R242 G222 B194]
+
+Option (I don't use this one):
+line darker cream RGB (HTML d7bc9f) [R215 G188 B159]

@@ -1,0 +1,2 @@
+line light cream RGB (HTML f2dec2) [R242 G222 B194]
+line darker cream RGB (HTML d7bc9f) [R215 G188 B159]
