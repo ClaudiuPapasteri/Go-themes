@@ -6,8 +6,8 @@
 // @match        https://online-go.com/game/*
 // @match        https://online-go.com/review/*
 // @match        https://online-go.com/demo/*
-// @downloadURL  https://raw.githubusercontent.com/ClaudiuPapasteri/Go-themes/OGS-simple-bg/OGS-simple-bg.user.js
-// @updateURL    https://raw.githubusercontent.com/ClaudiuPapasteri/Go-themes/OGS-simple-bg/OGS-simple-bg.user.js
+// @downloadURL  https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
+// @updateURL    https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
 // @license      MIT
 // ==/UserScript==
 
