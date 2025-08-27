@@ -27,7 +27,7 @@ This is barebones version of a Tampermonkey script by SoumyaK4 (https://soumyak4
 
 Just edit the `DEFAULT_BG` with your own picture. I use DEFAULT_BG = 'https://claudiupapasteri.github.io/Go-themes/OGS-simple-bg/Immortals_Playing_Weiqi_on_Penglai_(overley).jpg'. 
 
-This is a 16th century ink and color on silk pice of Daoist art entitled _**Immortals Playing Weiqi on Penglai**_ that helps me keep the Wuu Weing when blunder and lose _won_ games (should have even a more profound effect if you [see it at the Smithsonian](https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1911.188/). 
+This is a 16th century ink and color on silk pice of Daoist art entitled _**Immortals Playing Weiqi on Penglai**_ that helps me keep the Wuu Weing when I blunder and lose _won_ games (should have even a more profound effect if you [see it at the Smithsonian](https://asia.si.edu/explore-art-culture/collections/search/edanmdm:fsg_F1911.188/). 
 
 ![](./OGS-simple-bg/OGS-simple-bg_preview.png)
 
