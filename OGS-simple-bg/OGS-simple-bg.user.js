@@ -26,7 +26,7 @@
     document.documentElement.style.backgroundPosition = 'center';
     document.documentElement.style.backgroundRepeat = 'no-repeat';
 
-    // also clear the game container background if it exists
+    // clear the game container background if it exists
     const container = document.getElementById('default-variant-container');
     if (container) {
       container.style.backgroundImage = `url('${DEFAULT_BG}')`;
@@ -39,13 +39,14 @@
 
   // border around the Go board
   function setBoardBorder() {
-    const goban = document.querySelector('.Goban');
-    if (goban) {
+    // pick only the OUTER Goban (no data-pointers-bound attribute)
+    const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+    if (outerGoban) {
       if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-        goban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-        goban.style.boxSizing = "border-box"; // makes border not add extra space
+        outerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+        outerGoban.style.boxSizing = "border-box";
       } else {
-        goban.style.border = "none";
+        outerGoban.style.border = "none";
       }
     }
   }
