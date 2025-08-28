@@ -50,6 +50,9 @@
   }
 
   function applyAll() {
+    setBackground();
+    setBoardBorder();
+  }
 
   window.addEventListener('load', applyAll);
 
