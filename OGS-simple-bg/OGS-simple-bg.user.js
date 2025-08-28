@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         OGS Simple Background
-// @version      2.0
-// @description  Sets a custom background on OGS game/review/demo pages & Zen Mode; may also be used to add a boarder to the goban. 
+// @version      3.0
+// @description  Sets a custom background on OGS game/review/demo/observe pages & Zen Mode; may also be used to add a boarder to the goban. 
 // @author       Claudiu C. Papasteri
 // @credits      Started from a barebones version of a script by SoumyaK4 (https://soumyak4.in): https://github.com/SoumyaK4/OGS-Tampermonkey
 // @match        https://online-go.com/game/*
 // @match        https://online-go.com/review/*
 // @match        https://online-go.com/demo/*
+// @match        https://online-go.com/observe-games/*
 // @downloadURL  https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
 // @updateURL    https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
 // @license      MIT
