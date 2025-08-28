@@ -45,30 +45,27 @@
   }
 
   // border around the Go board
-  function setBorder() {
-  if (!DEFAULT_BORDER_WIDTH || !DEFAULT_BORDER_COLOR) return;
-
-  const innerGoban = document.querySelector(".goban-container > .Goban > .Goban");
-  if (innerGoban) {
-    innerGoban.style.border = `${DEFAULT_BORDER_WIDTH}px solid ${DEFAULT_BORDER_COLOR}`;
-    innerGoban.style.boxSizing = "border-box";  // ensure border doesn’t shrink/expand the board
+  function setBoardBorder() {
+    // pick only the OUTER Goban (no data-pointers-bound attribute)
+    const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+    if (outerGoban) {
+      if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
+        outerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+        outerGoban.style.boxSizing = "border-box";
+      } else {
+        outerGoban.style.border = "none";
+      }
+    }
   }
-}
 
-function initTheme() {
-  setBackground();
-  setBorder();
-
-  // Watch for SPA redraws, resizes, etc.
-  const container = document.querySelector(".goban-container");
-  if (container) {
-    const observer = new MutationObserver(() => {
-      setBackground();
-      setBorder();
-    });
-    observer.observe(container, { childList: true, subtree: true, attributes: true });
+  function applyAll() {
+    setBackground();
+    setBoardBorder();
   }
-}
+ 
+  // Run once on page load
+  window.addEventListener('load', applyAll);
 
-// Run on load
-initTheme();
+  // Run again if URL changes (for navigation within OGS SPA)
+  new MutationObserver(applyAll).observe(document, { childList: true, subtree: true });
+})();
