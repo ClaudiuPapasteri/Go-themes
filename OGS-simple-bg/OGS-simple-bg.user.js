@@ -55,15 +55,23 @@
               innerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
               innerGoban.style.boxSizing = "border-box";
                             
-              // Adjust positioning if needed
-              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
-              if (outerGoban) {
-                  // Make sure the outer container doesn't clip the border
-                  outerGoban.style.overflow = "visible";
-              }
-          } else {
-              innerGoban.style.border = "none";
-          }
+                // Adjust positioning if needed
+                const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+                if (outerGoban) {
+                    // Make sure the outer container doesn't clip the border
+                    outerGoban.style.overflow = "visible";
+                    
+                    // Adjust the inner board position to account for the border
+                    const borderWidth = parseInt(DEFAULT_BORDER_WIDTH);
+                    const currentTop = parseInt(innerGoban.style.top || 0);
+                    const currentLeft = parseInt(innerGoban.style.left || 0);
+                    
+                    innerGoban.style.top = `${currentTop - borderWidth}px`;
+                    innerGoban.style.left = `${currentLeft - borderWidth}px`;
+                }
+            } else {
+                innerGoban.style.border = "none";
+            }
       }
   }
 
