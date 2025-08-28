@@ -35,7 +35,7 @@
     });
   }
 
-  // Border around the Go board
+    // Border around the Go board
   function setBoardBorder() {
       // Find the actual board element (the inner one with data-pointers-bound)
       const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
@@ -56,19 +56,19 @@
               innerGoban.style.border = "none";
           }
       }
-    }
 
-    function applyAll() {
-        setBackground();
-        setBoardBorder();
-    }
+  }
 
-    // Run once on page load
-    window.addEventListener('load', applyAll);
+  function applyAll() {
+    setBackground();
+    setBoardBorder();
+   }
 
-    // Run again if URL changes (for navigation within OGS SPA)
-    new MutationObserver(applyAll).observe(document, { 
+  window.addEventListener('load', applyAll);
+
+  // Run again if URL changes (for navigation within OGS SPA)
+  new MutationObserver(applyAll).observe(document, { 
         childList: true, 
         subtree: true 
-    });
+  });
 })();
