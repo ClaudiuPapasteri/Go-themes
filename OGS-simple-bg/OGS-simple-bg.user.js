@@ -46,35 +46,54 @@
 
   // Border around the Go board
   function setBoardBorder() {
-      // Find the outer Goban container (not the one with data-pointers-bound)
-      const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+      // Find the actual board element (the inner one with data-pointers-bound)
+      const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
       
-      if (outerGoban) {
+      if (innerGoban) {
           if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-              // Apply border to the outer container
-              outerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-              outerGoban.style.boxSizing = "border-box";
+              // Apply border to the inner board
+              innerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+              innerGoban.style.boxSizing = "border-box";
               
-              // Adjust the inner board position to account for the border
-              const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
-              if (innerGoban) {
-                  // Reset any previous positioning adjustments
-                  innerGoban.style.top = "0";
-                  innerGoban.style.left = "0";
+              // Adjust the board size to account for the border
+              const borderWidth = parseInt(DEFAULT_BORDER_WIDTH);
+              const computedStyle = window.getComputedStyle(innerGoban);
+              const currentWidth = parseInt(computedStyle.width);
+              const currentHeight = parseInt(computedStyle.height);
+              
+              // Reduce the inner board size to make room for the border
+              innerGoban.style.width = `${currentWidth - (borderWidth * 2)}px`;
+              innerGoban.style.height = `${currentHeight - (borderWidth * 2)}px`;
+              
+              // Adjust positioning to center the board
+              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+              if (outerGoban) {
+                  // Make sure the outer container doesn't clip the border
+                  outerGoban.style.overflow = "visible";
+                  
+                  // Center the inner board within the outer container
+                  innerGoban.style.position = "absolute";
+                  innerGoban.style.top = `${borderWidth}px`;
+                  innerGoban.style.left = `${borderWidth}px`;
               }
           } else {
-              outerGoban.style.border = "none";
+              innerGoban.style.border = "none";
               
-              // Reset inner board positioning if border is removed
-              const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
-              if (innerGoban) {
-                  innerGoban.style.top = "";
-                  innerGoban.style.left = "";
+              // Reset size and positioning if border is removed
+              innerGoban.style.width = "";
+              innerGoban.style.height = "";
+              innerGoban.style.top = "";
+              innerGoban.style.left = "";
+              innerGoban.style.position = "";
+              
+              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+              if (outerGoban) {
+                  outerGoban.style.overflow = "";
               }
           }
       }
   }
-
+  
   function applyAll() {
     setBackground();
     setBoardBorder();
