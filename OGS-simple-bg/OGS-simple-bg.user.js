@@ -46,25 +46,38 @@
 
   // Border around the Go board
   function setBoardBorder() {
-      // Find the actual board element (the inner one with data-pointers-bound)
-      const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
-      
-      if (innerGoban) {
-          if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-              // Apply border to the inner board
-              innerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-              innerGoban.style.boxSizing = "border-box";
-                            
-              // Adjust positioning if needed
-              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
-              if (outerGoban) {
-                  // Make sure the outer container doesn't clip the border
-                  outerGoban.style.overflow = "visible";
-              }
-          } else {
-              innerGoban.style.border = "none";
-          }
+    // Find the outer container that wraps the board
+    const boardContainer = document.querySelector('.goban-container');
+    
+    if (boardContainer) {
+      if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
+        // Create a border element if it doesn't exist
+        let borderElement = boardContainer.querySelector('.custom-border');
+        if (!borderElement) {
+          borderElement = document.createElement('div');
+          borderElement.className = 'custom-border';
+          borderElement.style.position = 'absolute';
+          borderElement.style.top = '0';
+          borderElement.style.left = '0';
+          borderElement.style.width = '100%';
+          borderElement.style.height = '100%';
+          borderElement.style.pointerEvents = 'none';
+          borderElement.style.zIndex = '10';
+          boardContainer.style.position = 'relative';
+          boardContainer.appendChild(borderElement);
+        }
+        
+        // Apply border styles
+        borderElement.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+        borderElement.style.boxSizing = 'border-box';
+      } else {
+        // Remove border if it exists
+        const borderElement = boardContainer.querySelector('.custom-border');
+        if (borderElement) {
+          boardContainer.removeChild(borderElement);
+        }
       }
+    }
   }
 
   function applyAll() {
