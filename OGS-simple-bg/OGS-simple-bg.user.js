@@ -38,12 +38,13 @@
   }
 
   // border around the Go board
-    const goban = document.querySelector('.goban-container');
+    const goban = document.querySelector('.Goban');
     if (goban) {
       if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
         goban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+        goban.style.boxSizing = "border-box"; // ensures border does not break layout
       } else {
-        goban.style.border = 'none';
+        goban.style.border = "none";
       }
     }
   }
