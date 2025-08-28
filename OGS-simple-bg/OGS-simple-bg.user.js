@@ -51,44 +51,34 @@
       
       if (innerGoban) {
           if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-              // Apply border to the inner board
-              innerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-              innerGoban.style.boxSizing = "border-box";
+              // Create a border wrapper instead of modifying the board directly
+              let borderWrapper = innerGoban.parentElement.querySelector('.border-wrapper');
               
-              // Adjust the board size to account for the border
-              const borderWidth = parseInt(DEFAULT_BORDER_WIDTH);
-              const computedStyle = window.getComputedStyle(innerGoban);
-              const currentWidth = parseInt(computedStyle.width);
-              const currentHeight = parseInt(computedStyle.height);
-              
-              // Reduce the inner board size to make room for the border
-              innerGoban.style.width = `${currentWidth - (borderWidth * 2)}px`;
-              innerGoban.style.height = `${currentHeight - (borderWidth * 2)}px`;
-              
-              // Adjust positioning to center the board
-              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
-              if (outerGoban) {
-                  // Make sure the outer container doesn't clip the border
-                  outerGoban.style.overflow = "visible";
+              if (!borderWrapper) {
+                  // Create a wrapper element for the border
+                  borderWrapper = document.createElement('div');
+                  borderWrapper.className = 'border-wrapper';
+                  borderWrapper.style.position = 'relative';
+                  borderWrapper.style.display = 'inline-block';
                   
-                  // Center the inner board within the outer container
-                  innerGoban.style.position = "absolute";
-                  innerGoban.style.top = `${borderWidth}px`;
-                  innerGoban.style.left = `${borderWidth}px`;
+                  // Wrap the innerGoban with the border wrapper
+                  innerGoban.parentNode.insertBefore(borderWrapper, innerGoban);
+                  borderWrapper.appendChild(innerGoban);
               }
+              
+              // Apply border to the wrapper
+              borderWrapper.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+              borderWrapper.style.boxSizing = 'border-box';
+              
           } else {
-              innerGoban.style.border = "none";
-              
-              // Reset size and positioning if border is removed
-              innerGoban.style.width = "";
-              innerGoban.style.height = "";
-              innerGoban.style.top = "";
-              innerGoban.style.left = "";
-              innerGoban.style.position = "";
-              
-              const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
-              if (outerGoban) {
-                  outerGoban.style.overflow = "";
+              // Remove border if settings are empty
+              const borderWrapper = innerGoban.parentElement.querySelector('.border-wrapper');
+              if (borderWrapper) {
+                  // Move the innerGoban back to its original parent
+                  borderWrapper.parentNode.insertBefore(innerGoban, borderWrapper);
+                  borderWrapper.parentNode.removeChild(borderWrapper);
+              } else {
+                  innerGoban.style.border = 'none';
               }
           }
       }
