@@ -33,3 +33,8 @@ This is a 16th century ink and color on silk pice of Daoist art entitled _**Immo
 
 If the script doesn't run with message "This script was not executed yet", enable "Developer Mode" in the Manage Extensions area of the browser.
 
+How to use:
+1. Install Tampermonkey browser extension
+2. Click the Raw button of the `OGS-simple-bg.user.js` or access the raw URL triggering Tampermonkey pop-up.
+3. Edit the script with your parameters and install it.
+
