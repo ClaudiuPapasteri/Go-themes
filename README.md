@@ -35,6 +35,6 @@ If the script doesn't run with message "This script was not executed yet", enabl
 
 How to use:
 1. Install Tampermonkey browser extension
-2. Click the Raw button of the `OGS-simple-bg.user.js` or access the raw URL triggering Tampermonkey pop-up.
+2. Click the Raw button of the `OGS-simple-bg.user.js` or access the raw URL, triggering a Tampermonkey pop-up asking if you want to install the script.
 3. Edit the script with your parameters and install it.
 
