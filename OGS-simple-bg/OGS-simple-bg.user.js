@@ -27,14 +27,21 @@
     document.documentElement.style.backgroundRepeat = 'no-repeat';
 
     // clear the game container background if it exists
-    const container = document.getElementById('default-variant-container');
-    if (container) {
-      container.style.backgroundImage = `url('${DEFAULT_BG}')`;
-      container.style.backgroundSize = 'cover';
-      container.style.backgroundPosition = 'center';
-      container.style.backgroundRepeat = 'no-repeat';
-      container.style.backgroundColor = 'transparent';
-    }
+
+    const containers = [
+      document.getElementById('default-variant-container'),
+      document.querySelector('.Game.MainGobanView.wide')  // both normal container and Zen mode container
+    ];
+
+    containers.forEach(container => {
+      if (container) {
+        container.style.backgroundImage = `url('${DEFAULT_BG}')`;
+        container.style.backgroundSize = 'cover';
+        container.style.backgroundPosition = 'center';
+        container.style.backgroundRepeat = 'no-repeat';
+        container.style.backgroundColor = 'transparent';
+      }
+    });
   }
 
   // border around the Go board
