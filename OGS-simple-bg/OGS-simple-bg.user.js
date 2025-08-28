@@ -7,7 +7,7 @@
 // @match        https://online-go.com/game/*
 // @match        https://online-go.com/review/*
 // @match        https://online-go.com/demo/*
-// @match        https://online-go.com/observe-games/*
+// @match        https://online-go.com/observe-games
 // @downloadURL  https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
 // @updateURL    https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js
 // @license      MIT
