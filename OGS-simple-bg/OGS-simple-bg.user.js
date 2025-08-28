@@ -16,6 +16,10 @@
 
   const DEFAULT_BG = 'https://claudiupapasteri.github.io/Go-themes/OGS-simple-bg/Immortals_Playing_Weiqi_on_Penglai_(overley).jpg';
 
+  // Leave empty ("") for no border around Go board
+  const DEFAULT_BORDER_WIDTH = "4px";    // e.g. "4px" or "" for none
+  const DEFAULT_BORDER_COLOR = "#22150e"; // e.g. "#22150e" or "" for none
+
   function setBackground() {
     document.documentElement.style.backgroundImage = `url('${DEFAULT_BG}')`;
     document.documentElement.style.backgroundSize = 'cover';
@@ -33,6 +37,17 @@
     }
   }
 
+  // border around the Go board
+    const goban = document.querySelector('.goban-container');
+    if (goban) {
+      if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
+        goban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+      } else {
+        goban.style.border = 'none';
+      }
+    }
+  }
+ 
   // Run once on page load
   window.addEventListener('load', setBackground);
 
