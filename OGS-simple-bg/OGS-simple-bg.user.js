@@ -38,20 +38,26 @@
   }
 
   // border around the Go board
+  function setBoardBorder() {
     const goban = document.querySelector('.Goban');
     if (goban) {
       if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
         goban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-        goban.style.boxSizing = "border-box"; // ensures border does not break layout
+        goban.style.boxSizing = "border-box"; // makes border not add extra space
       } else {
         goban.style.border = "none";
       }
     }
   }
+
+  function applyAll() {
+    setBackground();
+    setBoardBorder();
+  }
  
   // Run once on page load
-  window.addEventListener('load', setBackground);
+  window.addEventListener('load', applyAll);
 
   // Run again if URL changes (for navigation within OGS SPA)
-  new MutationObserver(setBackground).observe(document, { childList: true, subtree: true });
+  new MutationObserver(applyAll).observe(document, { childList: true, subtree: true });
 })();
