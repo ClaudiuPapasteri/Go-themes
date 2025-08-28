@@ -46,38 +46,33 @@
 
   // Border around the Go board
   function setBoardBorder() {
-    // Find the outer container that wraps the board
-    const boardContainer = document.querySelector('.goban-container');
-    
-    if (boardContainer) {
-      if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-        // Create a border element if it doesn't exist
-        let borderElement = boardContainer.querySelector('.custom-border');
-        if (!borderElement) {
-          borderElement = document.createElement('div');
-          borderElement.className = 'custom-border';
-          borderElement.style.position = 'absolute';
-          borderElement.style.top = '0';
-          borderElement.style.left = '0';
-          borderElement.style.width = '100%';
-          borderElement.style.height = '100%';
-          borderElement.style.pointerEvents = 'none';
-          borderElement.style.zIndex = '10';
-          boardContainer.style.position = 'relative';
-          boardContainer.appendChild(borderElement);
-        }
-        
-        // Apply border styles
-        borderElement.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-        borderElement.style.boxSizing = 'border-box';
-      } else {
-        // Remove border if it exists
-        const borderElement = boardContainer.querySelector('.custom-border');
-        if (borderElement) {
-          boardContainer.removeChild(borderElement);
-        }
+      // Find the outer Goban container (not the one with data-pointers-bound)
+      const outerGoban = document.querySelector('.Goban:not([data-pointers-bound])');
+      
+      if (outerGoban) {
+          if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
+              // Apply border to the outer container
+              outerGoban.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+              outerGoban.style.boxSizing = "border-box";
+              
+              // Adjust the inner board position to account for the border
+              const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
+              if (innerGoban) {
+                  // Reset any previous positioning adjustments
+                  innerGoban.style.top = "0";
+                  innerGoban.style.left = "0";
+              }
+          } else {
+              outerGoban.style.border = "none";
+              
+              // Reset inner board positioning if border is removed
+              const innerGoban = document.querySelector('.Goban[data-pointers-bound]');
+              if (innerGoban) {
+                  innerGoban.style.top = "";
+                  innerGoban.style.left = "";
+              }
+          }
       }
-    }
   }
 
   function applyAll() {
