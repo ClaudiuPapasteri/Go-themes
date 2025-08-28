@@ -51,35 +51,12 @@
       
       if (innerGoban) {
           if (DEFAULT_BORDER_WIDTH && DEFAULT_BORDER_COLOR) {
-              // Create a border wrapper instead of modifying the board directly
-              let borderWrapper = innerGoban.parentElement.querySelector('.border-wrapper');
-              
-              if (!borderWrapper) {
-                  // Create a wrapper element for the border
-                  borderWrapper = document.createElement('div');
-                  borderWrapper.className = 'border-wrapper';
-                  borderWrapper.style.position = 'relative';
-                  borderWrapper.style.display = 'inline-block';
-                  
-                  // Wrap the innerGoban with the border wrapper
-                  innerGoban.parentNode.insertBefore(borderWrapper, innerGoban);
-                  borderWrapper.appendChild(innerGoban);
-              }
-              
-              // Apply border to the wrapper
-              borderWrapper.style.border = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
-              borderWrapper.style.boxSizing = 'border-box';
-              
+              // Apply border to the inner board using outline instead of border
+              innerGoban.style.outline = `${DEFAULT_BORDER_WIDTH} solid ${DEFAULT_BORDER_COLOR}`;
+              innerGoban.style.outlineOffset = `-${parseInt(DEFAULT_BORDER_WIDTH)}px`;
           } else {
-              // Remove border if settings are empty
-              const borderWrapper = innerGoban.parentElement.querySelector('.border-wrapper');
-              if (borderWrapper) {
-                  // Move the innerGoban back to its original parent
-                  borderWrapper.parentNode.insertBefore(innerGoban, borderWrapper);
-                  borderWrapper.parentNode.removeChild(borderWrapper);
-              } else {
-                  innerGoban.style.border = 'none';
-              }
+              innerGoban.style.outline = 'none';
+              innerGoban.style.outlineOffset = '';
           }
       }
   }
