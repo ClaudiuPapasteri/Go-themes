@@ -31,10 +31,13 @@ This is a 16th century ink and color on silk piece of Daoist art entitled _**Imm
 
 ![](./OGS-simple-bg/OGS-simple-bg_preview.png)
 
+New feature: Now the script runs by default the [OGS move-timing script](https://github.com/psalaets/ogs-move-timing) when on appropiate pages.
+
 If the script doesn't run with message "This script was not executed yet", enable "Developer Mode" in the Manage Extensions area of the browser.
 
 How to use:
 1. Install Tampermonkey browser extension
-2. Click the Raw button of the `OGS-simple-bg.user.js` or access the raw URL, triggering a Tampermonkey pop-up asking if you want to install the script.
-3. Edit the script with your parameters and install it.
+2. Click here on [OGS-simple-bg.user.js](https://github.com/ClaudiuPapasteri/Go-themes/raw/refs/heads/main/OGS-simple-bg/OGS-simple-bg.user.js), triggering a Tampermonkey pop-up asking if you want to install the script.
+<!-- 2. Click the Raw button of the `OGS-simple-bg.user.js` or access the raw URL, triggering a Tampermonkey pop-up asking if you want to install the script. -->
+4. Edit the script with your parameters and install it.
 
