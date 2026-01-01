@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OGS Simple Background
 // @version      3.1
-// @description  Sets a custom background on OGS game/review/demo/observe pages & Zen mode; may also be used to add a boarder to the goban. The psalaets move-timing is called by default.  
+// @description  Sets a custom background on OGS game/review/demo/observe pages & Zen mode; may also be used to add a boarder to the goban. The psalaets move-timing script is also called by default.  
 // @author       Claudiu C. Papasteri
 // @credits      Started from a barebones version of a script by SoumyaK4 (https://soumyak4.in): https://github.com/SoumyaK4/OGS-Tampermonkey
 // @match        https://online-go.com/game/*
