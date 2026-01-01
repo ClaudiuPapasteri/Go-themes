@@ -16,12 +16,29 @@
 (function () {
   'use strict';
 
+  const ACTIVATE_MOVE_TIMING = true    // set to false to deactivate
+  
   const DEFAULT_BG = 'https://claudiupapasteri.github.io/Go-themes/OGS-simple-bg/Immortals_Playing_Weiqi_on_Penglai_(overley).jpg';
 
   // Leave empty ("") for no border around Go board
   const DEFAULT_BORDER_WIDTH = "4px";    // e.g. "4px" or "" for none
   const DEFAULT_BORDER_COLOR = "#22150e"; // e.g. "#22150e" or "" for none
 
+  // Activate psalaets move-timing script
+  const currentPath = window.location.pathname;  // get the current URL path
+  if (currentPath.startsWith('/game/') && ACTIVATE_MOVE_TIMING) {    // only load psalaets script for /game/ URLs - psalaets script expects only this URL
+      // Create and append the external script
+      const script = document.createElement("script");
+      script.src = `https://psalaets.github.io/ogs-move-timing/bookmarklet.js?${Date.now()}`;
+      script.type = "module";
+      
+      // Optional: Clean up after loading
+      script.onload = () => setTimeout(() => script.remove(), 1000);
+      
+      // Append to body and execute
+      document.body.appendChild(script);
+
+  // Set background
   function setBackground() {
     document.documentElement.style.backgroundImage = `url('${DEFAULT_BG}')`;
     document.documentElement.style.backgroundSize = 'cover';
