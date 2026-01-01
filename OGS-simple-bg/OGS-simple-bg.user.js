@@ -25,18 +25,30 @@
   const DEFAULT_BORDER_COLOR = "#22150e"; // e.g. "#22150e" or "" for none
 
   // Activate psalaets move-timing script
-  const currentPath = window.location.pathname;  // get the current URL path
-  if (currentPath.startsWith('/game/') && ACTIVATE_MOVE_TIMING) {    // only load psalaets script for /game/ URLs - psalaets script expects only this URL
-      // Create and append the external script
-      const script = document.createElement("script");
-      script.src = `https://psalaets.github.io/ogs-move-timing/bookmarklet.js?${Date.now()}`;
-      script.type = "module";
-      
-      // Optional: Clean up after loading
-      script.onload = () => setTimeout(() => script.remove(), 1000);
-      
-      // Append to body and execute
-      document.body.appendChild(script);
+  if (ACTIVATE_MOVE_TIMING) {
+    // Get the current URL path
+    const currentPath = window.location.pathname;
+    
+    if (currentPath.startsWith('/game/')) {
+        // Wait for DOM to be fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadExternalScript);
+        } else {
+            loadExternalScript();
+        }
+    }
+}
+
+function loadExternalScript() {
+    const script = document.createElement("script");
+    script.src = `https://psalaets.github.io/ogs-move-timing/bookmarklet.js?${Date.now()}`;
+    script.type = "module";
+    
+    script.onload = () => setTimeout(() => script.remove(), 1000);
+    document.body.appendChild(script);
+    
+    console.log('External script loaded from Tampermonkey');
+}
 
   // Set background
   function setBackground() {
